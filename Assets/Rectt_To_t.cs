@@ -150,6 +150,7 @@ public class Rectt_To_t : MonoBehaviour {
 	}
 	public delegate void temp(string s);
 	public delegate int temp2(string s);
+
 	// Update is called once per frame
 
 	Vector3 convert(Vector2 V2){
