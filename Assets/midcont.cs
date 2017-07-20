@@ -9,6 +9,7 @@ public class midcont : MonoBehaviour {
 	public List<InputField> IFs = new List<InputField>();
 	// Use this for initialization
 	public delegate void asd(string sf);
+	/* 
 	void Start () {
 		Main = GameObject.Find ("Canvas").transform.FindChild ("Main").GetComponent<RectTransform> ();
 		for (int i = 0; i < IFs.Count; i++) {
@@ -31,4 +32,5 @@ public class midcont : MonoBehaviour {
 	void Down () {
 		Main.anchoredPosition = new Vector2 (0,0);
 	}
+	*/
 }
