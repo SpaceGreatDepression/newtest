@@ -41,13 +41,14 @@ instans = this;
 			Debug.Log (transform.GetChild (i).name);
 			if (transform.GetChild (i).name == "dot") {
 				transform.GetChild (i).gameObject.AddComponent<Button> ();
-				transform.GetChild (i).gameObject.GetComponent<Button> ().onClick.AddListener (() => Using.transform.GetChild (0).GetComponent<Text> ().text += ".");
+				transform.GetChild (i).gameObject.GetComponent<Button> ().onClick.AddListener (() => {Using.transform.GetChild (0).GetComponent<Text> ().text += ".";FallowText();});
 			} else if (transform.GetChild (i).name == "del") {
 				transform.GetChild (i).gameObject.AddComponent<Button> ();
 				transform.GetChild (i).gameObject.GetComponent<Button> ().onClick.AddListener (() => {
 					if (Using.transform.GetChild (0).GetComponent<Text> ().text.Length > 0) {
-						Using.transform.GetChild (0).GetComponent<Text> ().text.Remove (
+						Using.transform.GetChild (0).GetComponent<Text> ().text = Using.transform.GetChild (0).GetComponent<Text> ().text.Remove (
 							Using.transform.GetChild (0).GetComponent<Text> ().text.Length-1,1);
+							FallowText();
 					}
 				});
 			} else {
@@ -85,12 +86,29 @@ instans = this;
 					break;
 				}
 				transform.GetChild (i).gameObject.AddComponent<Button> ();
-				transform.GetChild (i).gameObject.GetComponent<Button> ().onClick.AddListener (() => Using.transform.GetChild (0).GetComponent<Text> ().text += save);
+				transform.GetChild (i).gameObject.GetComponent<Button> ().onClick.AddListener (() =>{ Using.transform.GetChild (0).GetComponent<Text> ().text += save
+				;FallowText();});
 			
 			}
 		}
 }
 
+void FallowText(){
+	
+	if(Using!=null){
+		switch(Using.transform.parent.parent.name){
+			
+			case "2":
+			case "3":
+			case "4":
+			case "5":
+			
+			Main.FindChild("sam").FindChild(Using.transform.parent.parent.name).GetChild(0).GetComponent<Text>().text = Using.transform.GetChild (0).GetComponent<Text> ().text;
+
+			break;
+		}
+	}
+}
 public void Closecheck(){
 
 
