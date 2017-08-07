@@ -27,9 +27,7 @@ public class ToggleController : MonoBehaviour {
 					if (NomalToggle [i].T == T) {
 						
 						ToggleCallback (NomalToggle [i]);
-					if (saveTb) {
-						saveT = T;
-					}
+		
 						break;
 					}
 				}
@@ -46,12 +44,19 @@ public class ToggleController : MonoBehaviour {
 				PowerToggle.T.transform.GetChild (0).gameObject.SetActive (true);
 			}
 		} else {
-			if (saveT == ts.T) {
-				maker [maker.Count - 1].T.transform.GetChild (0).gameObject.SetActive (false);
-				maker.RemoveAt (maker.Count - 1);
-				saveT = null;
-				saveTb = false;
-			} else {
+		
+for(int i = 0 ; i < maker.Count;i++){
+	if(ts.T == maker[i].T){
+		saveTb = false;
+					maker [i].T.transform.GetChild (0).gameObject.SetActive (false);
+				maker.RemoveAt (i);
+		break;
+	}
+}
+
+	
+			
+	if (saveTb) {
 				ts.T.transform.GetChild (0).gameObject.SetActive (true);
 				;
 				if (maker.Count < 2) {

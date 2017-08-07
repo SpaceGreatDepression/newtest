@@ -32,27 +32,120 @@ public class MainController : MonoBehaviour {
 							s = float.Parse (TC.maker [0].S.text);
 						}
 						d = Mathf.Sqrt (Mathf.Pow(g,2)+Mathf.Pow(s,2));
-						ga = Mathf.Atan(s/g);
-						Debug.Log (ga);
-						Debug.Log (ga*Mathf.Rad2Deg);
+						ga = Mathf.Atan(s/g)*Mathf.Rad2Deg;
+				TC.NomalToggle [2].S.text = ban3(d);
+				TC.NomalToggle [3].S.text = ban3(ga);
 					//	TC.NomalToggle [2].S.text
-
+//charton();
 					}else if((pp (TC.maker [0].T).name == "2" && pp (TC.maker [1].T).name == "4") || (pp (TC.maker [1].T).name == "2" && pp (TC.maker [0].T).name == "4")){
 						//가로대각
+							float g ,s,d,ga;
+
+										if (pp (TC.maker [0].T).name == "2") {
+							g = float.Parse (TC.maker [0].S.text);
+							d = float.Parse (TC.maker [1].S.text);
+						} else {
+							g = float.Parse (TC.maker [1].S.text);
+							d = float.Parse (TC.maker [0].S.text);
+						}
+						s =Mathf.Sqrt (Mathf.Pow(d,2)-Mathf.Pow(g,2));
+						ga = Mathf.Acos(g/d)*Mathf.Rad2Deg;
+
+				TC.NomalToggle [1].S.text = ban3(s);
+				TC.NomalToggle [3].S.text = ban3(ga);
+				//charton();
 					}else if((pp (TC.maker [0].T).name == "2" && pp (TC.maker [1].T).name == "5") || (pp (TC.maker [1].T).name == "2" && pp (TC.maker [0].T).name == "5")){
 						//가로각도
+						float g ,s,d,ga;
+						if (pp (TC.maker [0].T).name == "2") {
+							g = float.Parse (TC.maker [0].S.text);
+							ga = float.Parse (TC.maker [1].S.text);
+						} else {
+							g = float.Parse (TC.maker [1].S.text);
+							ga = float.Parse (TC.maker [0].S.text);
+						}
+						s = Mathf.Tan(ga*Mathf.Deg2Rad)*g;
+						d = Mathf.Sqrt (Mathf.Pow(g,2)+Mathf.Pow(s,2));
+				TC.NomalToggle [1].S.text = ban3(s);
+				TC.NomalToggle [2].S.text = ban3(d);
+//charton();
 					}else if((pp (TC.maker [0].T).name == "3" && pp (TC.maker [1].T).name == "4") || (pp (TC.maker [1].T).name == "3" && pp (TC.maker [0].T).name == "4")){
 						//세로대각
+float g ,s,d,ga;
+						if (pp (TC.maker [0].T).name == "3") {
+							s = float.Parse (TC.maker [0].S.text);
+							d = float.Parse (TC.maker [1].S.text);
+						} else {
+							d = float.Parse (TC.maker [1].S.text);
+							s = float.Parse (TC.maker [0].S.text);
+						}
+						g = Mathf.Sqrt (Mathf.Pow(d,2)-Mathf.Pow(s,2));
+						ga = Mathf.Atan(s/g)*Mathf.Rad2Deg;
+				TC.NomalToggle [0].S.text = ban3(g);
+				TC.NomalToggle [3].S.text = ban3(ga);
+//charton();
 					}else if((pp (TC.maker [0].T).name == "3" && pp (TC.maker [1].T).name == "5") || (pp (TC.maker [1].T).name == "3" && pp (TC.maker [0].T).name == "5")){
 						//세로각도
+						float g ,s,d,ga;
+						if (pp (TC.maker [0].T).name == "3") {
+							s = float.Parse (TC.maker [0].S.text);
+							ga = float.Parse (TC.maker [1].S.text);
+						} else {
+							s = float.Parse (TC.maker [1].S.text);
+							ga = float.Parse (TC.maker [0].S.text);
+						}
+						g = 1f/Mathf.Tan(ga*Mathf.Deg2Rad)*s;
+						d = Mathf.Sqrt (Mathf.Pow(g,2)+Mathf.Pow(s,2));
+				TC.NomalToggle [0].S.text = ban3(g);
+				TC.NomalToggle [2].S.text = ban3(d);
+				//charton();
 					}else if((pp (TC.maker [0].T).name == "4" && pp (TC.maker [1].T).name == "5") || (pp (TC.maker [1].T).name == "4" && pp (TC.maker [0].T).name == "5")){
 						//대각각도
+											float g ,s,d,ga;
+						if (pp (TC.maker [0].T).name == "4") {
+							d = float.Parse (TC.maker [0].S.text);
+							ga = float.Parse (TC.maker [1].S.text);
+						} else {
+							d = float.Parse (TC.maker [1].S.text);
+							ga = float.Parse (TC.maker [0].S.text);
+						}
+						s = Mathf.Sin(ga*Mathf.Deg2Rad)*d;
+						g = Mathf.Sqrt (Mathf.Pow(d,2)-Mathf.Pow(s,2));
+				TC.NomalToggle [0].S.text = ban3(g);
+				TC.NomalToggle [1].S.text = ban3(s);
+				//charton();
 					}
 
 
 				}
 			}
 		}
+			charton();
+	}
+	public void changeview(){
+		if(
+		TC.transform.parent.FindChild("view2").GetComponent<RectTransform>().anchoredPosition.x == 1080f){
+		TC.transform.parent.FindChild("view2").GetComponent<RectTransform>().anchoredPosition = new Vector2(0,0);
+		}else{
+			TC.transform.parent.FindChild("view2").GetComponent<RectTransform>().anchoredPosition = new Vector2(1080,0);
+		}
+	}
+	public static string ban3(float f)
+    {
+      
+        float n =  Mathf.Round (f * 100.0f);
+             n = n / 100f;
+        return n.ToString();
+    }
+	public static string ban3(string f)
+    {
+      
+       
+        return ban3(float.Parse(f));
+    }
+	void charton(){
+		TC.transform.parent.FindChild("1").GetChild(0).GetComponent<LoopHorizontalScrollRect>().RefreshCells();
+		TC.transform.parent.FindChild("view2").FindChild("2").GetChild(0).GetComponent<LoopHorizontalScrollRect>().RefreshCells();
 	}
 	Transform pp(GameObject g){
 		return g.transform.parent.parent;

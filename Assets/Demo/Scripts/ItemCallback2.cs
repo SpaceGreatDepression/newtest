@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class ItemCallback : MonoBehaviour 
+public class ItemCallback2 : MonoBehaviour 
 {
     public Text text;
     public LayoutElement element;
@@ -12,13 +12,12 @@ public class ItemCallback : MonoBehaviour
         string name = "Cell " + idx.ToString();
         if (text != null)
         {
-            string s =GameObject.Find("Canvas").transform.FindChild("Main").FindChild("midle").FindChild("6").FindChild("Text").GetChild(0).GetChild(0).GetComponent<Text>().text;
-          string s1 = GameObject.Find("Canvas").transform.FindChild("Main").FindChild("midle").FindChild("3").FindChild("Text").GetChild(0).GetChild(0).GetComponent<Text>().text;
-            if(s!=""&&s1!=""){
+            string s =GameObject.Find("Canvas").transform.FindChild("Main").FindChild("midle").FindChild("6").FindChild("Text2").GetChild(0).GetChild(0).GetComponent<Text>().text;
+            if(s!=""){
            float num = float.Parse(s);
-          float num1 = float.Parse(s1);
+        
           
-            text.text = (((float)idx*num1) + num).ToString();
+            text.text = ((float)idx * num).ToString();
        
         }else{
                 text.text = "";
