@@ -18,7 +18,7 @@ public class ItemCallback : MonoBehaviour
            float num = float.Parse(s);
           float num1 = float.Parse(s1);
           
-            text.text = (((float)idx*num1) + num).ToString();
+            text.text = MainController.ban3(((float)idx*num1) + num);
        
         }else{
                 text.text = "";

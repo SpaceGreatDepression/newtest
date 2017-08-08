@@ -16,10 +16,10 @@ public class ToggleController : MonoBehaviour {
 	GameObject saveT;
 	public void Togglecheck(GameObject T){
 		saveTb = true;
-		if (T == PowerToggle.T) {
+		//if (T == PowerToggle.T) {
 			//saveT = null;
-			ToggleCallback (PowerToggle);
-		} else {
+		//	ToggleCallback (PowerToggle);
+	//	} else {
 
 				for (int i = 0; i < NomalToggle.Count; i++) {
 					//Debug.Log (T.GetInstanceID());
@@ -33,7 +33,7 @@ public class ToggleController : MonoBehaviour {
 				}
 
 
-		}
+	//	}
 	}
 	bool saveTb = true;
 	public void ToggleCallback(TS ts){

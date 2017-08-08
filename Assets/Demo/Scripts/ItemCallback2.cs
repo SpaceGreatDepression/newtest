@@ -14,10 +14,10 @@ public class ItemCallback2 : MonoBehaviour
         {
             string s =GameObject.Find("Canvas").transform.FindChild("Main").FindChild("midle").FindChild("6").FindChild("Text2").GetChild(0).GetChild(0).GetComponent<Text>().text;
             if(s!=""){
-           float num = float.Parse(s);
+           float num = MainController.Dd;
         
           
-            text.text = ((float)idx * num).ToString();
+            text.text = MainController.ban3((float)(idx+1) * num);
        
         }else{
                 text.text = "";

@@ -51,6 +51,20 @@ instans = this;
 							FallowText();
 					}
 				});
+			}else if(transform.GetChild (i).name == "delall"){
+				
+	transform.GetChild (i).gameObject.AddComponent<Button> ();
+				transform.GetChild (i).gameObject.GetComponent<Button> ().onClick.AddListener (() => {
+					if (Using.transform.GetChild (0).GetComponent<Text> ().text.Length > 0) {
+						Using.transform.GetChild (0).GetComponent<Text> ().text = "";
+							FallowText();
+					}
+				});
+			}else if(transform.GetChild (i).name == "re"){
+					transform.GetChild (i).gameObject.AddComponent<Button> ();
+					transform.GetChild (i).gameObject.GetComponent<Button> ().onClick.AddListener (() => 
+CloseKeyboard_hard()
+					);
 			} else {
 				string save = "";
 				switch (transform.GetChild (i).name) {
@@ -109,6 +123,7 @@ void FallowText(){
 		}
 	}
 }
+
 public void Closecheck(){
 
 
