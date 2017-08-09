@@ -6,9 +6,12 @@ public class ItemCallback3 : MonoBehaviour
 {
     public Text text;
     public LayoutElement element;
-    private static float[] randomWidths = new float[3] { 100, 150, 50 };
+    private static float[] randomWidths = new float[3] { 200, 150, 50 };
     void ScrollCellIndex(int idx)
     {
+		int temp = idx % 5;
+		int temp2 = idx / 5;
+		idx = (temp * 8) + temp2;
           string name = "Cell " + idx.ToString();
         if (text != null)
         {

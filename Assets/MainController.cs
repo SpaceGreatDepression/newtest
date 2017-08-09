@@ -5,6 +5,11 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 public class MainController : MonoBehaviour {
 	public ToggleController TC;
+	void Update(){
+		if (Input.GetKey (KeyCode.Escape)) {
+			Application.Quit ();
+		}
+	}
 	public void result(){
 		if (TC.PowerToggle.T.transform.GetChild (0).gameObject.activeSelf) {
 			if (TC.PowerToggle.S.text != "") {
@@ -33,7 +38,8 @@ public class MainController : MonoBehaviour {
 						}
 						d = Mathf.Sqrt (Mathf.Pow(g,2)+Mathf.Pow(s,2));
 						ga = Mathf.Atan(s/g)*Mathf.Rad2Deg;
-					Dd = d/s;
+					Dd = d/g;
+						se = s / g;
 				TC.NomalToggle [2].S.text = ban3(d);
 				TC.NomalToggle [3].S.text = ban3(ga);
 					//	TC.NomalToggle [2].S.text
@@ -51,7 +57,8 @@ public class MainController : MonoBehaviour {
 						}
 						s =Mathf.Sqrt (Mathf.Pow(d,2)-Mathf.Pow(g,2));
 						ga = Mathf.Acos(g/d)*Mathf.Rad2Deg;
-                 Dd = d/s;
+                 Dd = d/g;
+						se = s / g;
 				TC.NomalToggle [1].S.text = ban3(s);
 				TC.NomalToggle [3].S.text = ban3(ga);
 				//charton();
@@ -68,7 +75,8 @@ public class MainController : MonoBehaviour {
 					
 						s = Mathf.Tan(ga*Mathf.Deg2Rad)*g;
 						d = Mathf.Sqrt (Mathf.Pow(g,2)+Mathf.Pow(s,2));
-						Dd = d/s;
+						Dd = d/g;
+						se = s / g;
 				TC.NomalToggle [1].S.text = ban3(s);
 				TC.NomalToggle [2].S.text = ban3(d);
 //charton();
@@ -84,7 +92,8 @@ float g ,s,d,ga;
 						}
 						g = Mathf.Sqrt (Mathf.Pow(d,2)-Mathf.Pow(s,2));
 						ga = Mathf.Atan(s/g)*Mathf.Rad2Deg;
-						Dd = d/s;
+						Dd = d/g;
+						se = s / g;
 				TC.NomalToggle [0].S.text = ban3(g);
 				TC.NomalToggle [3].S.text = ban3(ga);
 //charton();
@@ -100,7 +109,8 @@ float g ,s,d,ga;
 						}
 						g = 1f/Mathf.Tan(ga*Mathf.Deg2Rad)*s;
 						d = Mathf.Sqrt (Mathf.Pow(g,2)+Mathf.Pow(s,2));
-								Dd = d/s;
+								Dd = d/g;
+						se = s / g;
 				TC.NomalToggle [0].S.text = ban3(g);
 				TC.NomalToggle [2].S.text = ban3(d);
 		
@@ -117,7 +127,8 @@ float g ,s,d,ga;
 						}
 						s = Mathf.Sin(ga*Mathf.Deg2Rad)*d;
 						g = Mathf.Sqrt (Mathf.Pow(d,2)-Mathf.Pow(s,2));
-						Dd = d/s;
+						Dd = d/g;
+						se = s / g;
 				TC.NomalToggle [0].S.text = ban3(g);
 				TC.NomalToggle [1].S.text = ban3(s);
 				//charton();
@@ -138,8 +149,28 @@ float g ,s,d,ga;
 		}
 	}
 	public void resetall(){
+
 		PlayerPrefs.DeleteAll();
-		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+		GameObject.Find ("Canvas").transform.FindChild ("Main").FindChild ("sam").FindChild ("2").GetChild (0).GetComponent<Text> ().text = "";
+		TC.NomalToggle [0].S.text = "";
+		GameObject.Find("Canvas").transform.FindChild("Main").FindChild("sam").FindChild("3").GetChild(0).GetComponent<Text>().text  = "";
+		TC.NomalToggle [1].S.text = "";
+		GameObject.Find("Canvas").transform.FindChild("Main").FindChild("sam").FindChild("4").GetChild(0).GetComponent<Text>().text  = "";
+		TC.NomalToggle [2].S.text = "";
+		GameObject.Find("Canvas").transform.FindChild("Main").FindChild("sam").FindChild("5").GetChild(0).GetComponent<Text>().text = "";
+		TC.NomalToggle [3].S.text = "";
+
+		GameObject.Find("Canvas").transform.FindChild("Main").FindChild("midle").FindChild("6").GetChild(0).GetChild(0).GetChild(0).GetComponent<Text>().text = "";
+		GameObject.Find("Canvas").transform.FindChild("Main").FindChild("midle").FindChild("7").GetChild(0).GetChild(0).GetChild(0).GetComponent<Text>().text = "";
+		GameObject.Find ("Canvas").transform.FindChild ("Main").FindChild ("midle").FindChild ("2").FindChild ("Toggle").GetChild (0).GetChild (0).gameObject.SetActive (false);
+		GameObject.Find ("Canvas").transform.FindChild ("Main").FindChild ("midle").FindChild ("3").FindChild ("Toggle").GetChild (0).GetChild (0).gameObject.SetActive (false);
+		GameObject.Find ("Canvas").transform.FindChild ("Main").FindChild ("midle").FindChild ("4").FindChild ("Toggle").GetChild (0).GetChild (0).gameObject.SetActive (false);
+		GameObject.Find ("Canvas").transform.FindChild ("Main").FindChild ("midle").FindChild ("5").FindChild ("Toggle").GetChild (0).GetChild (0).gameObject.SetActive (false);
+		TC.maker.Clear ();
+		TC.transform.parent.FindChild("1").GetChild(0).GetComponent<LoopHorizontalScrollRect>().RefreshCells();
+		TC.transform.parent.FindChild("view2").FindChild("2").GetChild(0).GetComponent<LoopHorizontalScrollRect>().RefreshCells();
+		TC.transform.parent.FindChild("view2").FindChild("3").GetChild(0).GetComponent<LoopHorizontalScrollRect>().RefreshCells();
+	
 	}
 	public static string ban3(float f)
     {
@@ -156,13 +187,17 @@ float g ,s,d,ga;
     }
 	
 	public static float Dd;
+	public static float se;
 	void charton(){
 
-if(GameObject.Find("Canvas").transform.FindChild("Main").FindChild("midle").FindChild("6").FindChild("Text").GetChild(0).GetChild(0).GetComponent<Text>().text!=""){
+		if(GameObject.Find("Canvas").transform.FindChild("Main").FindChild("midle").FindChild("6").FindChild("Text").GetChild(0).GetChild(0).GetComponent<Text>().text!=""&&GameObject.Find("Canvas").transform.FindChild("Main").FindChild("midle").FindChild("7").FindChild("Text2").GetChild(0).GetChild(0).GetComponent<Text>().text!=""){
+			se = se*float.Parse(GameObject.Find("Canvas").transform.FindChild("Main").FindChild("midle").FindChild("7").FindChild("Text2").GetChild(0).GetChild(0).GetComponent<Text>().text);
 		TC.transform.parent.FindChild("1").GetChild(0).GetComponent<LoopHorizontalScrollRect>().RefreshCells();
 }
 		if(GameObject.Find("Canvas").transform.FindChild("Main").FindChild("midle").FindChild("7").FindChild("Text2").GetChild(0).GetChild(0).GetComponent<Text>().text!=""){
+			
 				Dd = Dd*float.Parse(GameObject.Find("Canvas").transform.FindChild("Main").FindChild("midle").FindChild("7").FindChild("Text2").GetChild(0).GetChild(0).GetComponent<Text>().text);
+
 		TC.transform.parent.FindChild("view2").FindChild("2").GetChild(0).GetComponent<LoopHorizontalScrollRect>().RefreshCells();
 		TC.transform.parent.FindChild("view2").FindChild("3").GetChild(0).GetComponent<LoopHorizontalScrollRect>().RefreshCells();
 		}
