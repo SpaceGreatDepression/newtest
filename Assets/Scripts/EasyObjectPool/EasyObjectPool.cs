@@ -109,7 +109,7 @@ class Pool
                 increaseSize = availableObjStack.Count + Mathf.Max(objectsInUse, 0);
             }
 #if UNITY_EDITOR
-            Debug.Log(string.Format("Growing pool {0}: {1} populated", poolName, increaseSize));
+           // Debug.Log(string.Format("Growing pool {0}: {1} populated", poolName, increaseSize));
 #endif
             if (increaseSize > 0)
             {

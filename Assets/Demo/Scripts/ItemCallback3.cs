@@ -12,7 +12,7 @@ public class ItemCallback3 : MonoBehaviour
           string name = "Cell " + idx.ToString();
         if (text != null)
         {
-            string s =GameObject.Find("Canvas").transform.FindChild("Main").FindChild("midle").FindChild("6").FindChild("Text2").GetChild(0).GetChild(0).GetComponent<Text>().text;
+            string s =GameObject.Find("Canvas").transform.FindChild("Main").FindChild("midle").FindChild("7").FindChild("Text2").GetChild(0).GetChild(0).GetComponent<Text>().text;
 
 
             if(s!=""){

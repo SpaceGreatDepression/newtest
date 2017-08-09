@@ -49,6 +49,8 @@ for(int i = 0 ; i < maker.Count;i++){
 	if(ts.T == maker[i].T){
 		saveTb = false;
 					maker [i].T.transform.GetChild (0).gameObject.SetActive (false);
+					    PlayerPrefs.SetInt("toggle"+maker[i].T.transform.parent.parent.name,0);
+					
 				maker.RemoveAt (i);
 		break;
 	}
@@ -58,14 +60,19 @@ for(int i = 0 ; i < maker.Count;i++){
 			
 	if (saveTb) {
 				ts.T.transform.GetChild (0).gameObject.SetActive (true);
-				;
+				
 				if (maker.Count < 2) {
 					maker.Add (ts);
+					PlayerPrefs.SetInt("toggle"+ts.T.transform.parent.parent.name,1);
+					Debug.Log(ts.T.transform.parent.parent.name);
 				} else {
+                    PlayerPrefs.SetInt("toggle"+maker[0].T.transform.parent.parent.name,0);
 					maker [0].T.transform.GetChild (0).gameObject.SetActive (false);
 					maker.RemoveAt (0);
 
 					maker.Add (ts);
+					PlayerPrefs.SetInt("toggle"+ts.T.transform.parent.parent.name,1);
+					Debug.Log(ts.T.transform.parent.parent.name);
 				}
 			}
 		}

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.SceneManagement;
 public class MainController : MonoBehaviour {
 	public ToggleController TC;
 	public void result(){
@@ -137,6 +137,10 @@ float g ,s,d,ga;
 			TC.transform.parent.FindChild("view2").GetComponent<RectTransform>().anchoredPosition = new Vector2(1080,0);
 		}
 	}
+	public void resetall(){
+		PlayerPrefs.DeleteAll();
+		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+	}
 	public static string ban3(float f)
     {
       
@@ -157,8 +161,8 @@ float g ,s,d,ga;
 if(GameObject.Find("Canvas").transform.FindChild("Main").FindChild("midle").FindChild("6").FindChild("Text").GetChild(0).GetChild(0).GetComponent<Text>().text!=""){
 		TC.transform.parent.FindChild("1").GetChild(0).GetComponent<LoopHorizontalScrollRect>().RefreshCells();
 }
-		if(GameObject.Find("Canvas").transform.FindChild("Main").FindChild("midle").FindChild("6").FindChild("Text2").GetChild(0).GetChild(0).GetComponent<Text>().text!=""){
-				Dd = Dd*float.Parse(GameObject.Find("Canvas").transform.FindChild("Main").FindChild("midle").FindChild("6").FindChild("Text2").GetChild(0).GetChild(0).GetComponent<Text>().text);
+		if(GameObject.Find("Canvas").transform.FindChild("Main").FindChild("midle").FindChild("7").FindChild("Text2").GetChild(0).GetChild(0).GetComponent<Text>().text!=""){
+				Dd = Dd*float.Parse(GameObject.Find("Canvas").transform.FindChild("Main").FindChild("midle").FindChild("7").FindChild("Text2").GetChild(0).GetChild(0).GetComponent<Text>().text);
 		TC.transform.parent.FindChild("view2").FindChild("2").GetChild(0).GetComponent<LoopHorizontalScrollRect>().RefreshCells();
 		TC.transform.parent.FindChild("view2").FindChild("3").GetChild(0).GetComponent<LoopHorizontalScrollRect>().RefreshCells();
 		}
@@ -175,5 +179,8 @@ if(GameObject.Find("Canvas").transform.FindChild("Main").FindChild("midle").Find
 	}
 	Transform pp(GameObject g){
 		return g.transform.parent.parent;
+	}
+	void Start(){
+		result();
 	}
 }

@@ -36,6 +36,32 @@ public GameObject Target,Using;
 void Awake(){
 instans = this;	
 		Main = GameObject.Find ("Canvas").transform.FindChild ("Main").GetComponent<RectTransform> ();
+for(int i = 2 ; i < 6;i++){
+if(PlayerPrefs.GetString(i.ToString())!=""){
+	Main.FindChild("sam").FindChild(i.ToString()).GetChild(0).GetComponent<Text>().text  = PlayerPrefs.GetString(i.ToString());
+	Main.FindChild("midle").FindChild(i.ToString()).FindChild("Text").GetChild(0).GetChild(0).GetComponent<Text>().text  = PlayerPrefs.GetString(i.ToString());
+}
+
+}
+if(PlayerPrefs.GetString("6")!=""){
+
+	Main.FindChild("midle").FindChild("6").FindChild("Text").GetChild(0).GetChild(0).GetComponent<Text>().text  = PlayerPrefs.GetString("6");
+}
+if(PlayerPrefs.GetString("7")!=""){
+
+	Main.FindChild("midle").FindChild("7").FindChild("Text2").GetChild(0).GetChild(0).GetComponent<Text>().text  = PlayerPrefs.GetString("7");
+}
+
+for(int i = 2 ; i < 6;i++){
+
+if(PlayerPrefs.GetInt("toggle"+i.ToString())==1){
+Main.FindChild("midle").FindChild(i.ToString()).FindChild("Toggle").FindChild("Background").GetChild(0).gameObject.SetActive(true);
+Main.FindChild("midle").GetComponent<ToggleController>().maker.Add(Main.FindChild("midle").GetComponent<ToggleController>().NomalToggle[i-2]);
+}
+}
+
+
+
 		for (int i = 0; i < transform.childCount - 1; i++) {
 
 			Debug.Log (transform.GetChild (i).name);
@@ -121,6 +147,7 @@ void FallowText(){
 
 			break;
 		}
+		PlayerPrefs.SetString(Using.transform.parent.parent.name,Using.transform.GetChild (0).GetComponent<Text> ().text);
 	}
 }
 

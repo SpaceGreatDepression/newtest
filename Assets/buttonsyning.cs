@@ -11,8 +11,9 @@ public class buttonsyning : MonoBehaviour {
 
 			
 
-	//	yield return new WaitUntil(()=>Target.triggers!=null);
-		yield return new WaitForSeconds(2f);
+		yield return new WaitUntil(()=>GameObject.Find("Canvas").transform.FindChild("Main").FindChild("midle").FindChild(name).
+		FindChild("Text").FindChild("InputField").GetComponent<EventTrigger>()!=null);
+		//yield return new WaitForSeconds(2f);
 	
 	Target = GameObject.Find("Canvas").transform.FindChild("Main").FindChild("midle").FindChild(name).
 		FindChild("Text").FindChild("InputField").GetComponent<EventTrigger>();
