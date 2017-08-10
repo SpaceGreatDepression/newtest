@@ -157,13 +157,13 @@ public void Closecheck(){
 }
 public void OpenKeyboard_hard(){
 GetComponent<RectTransform>().anchoredPosition = new Vector2(0,1000);
-		transform.FindChild ("area").gameObject.SetActive (true);
+		//transform.FindChild ("area").gameObject.SetActive (true);
 }
 public void OpenKeyboard_soft(float time){
 StartCoroutine(Mathf_Lerp(0,1000,time));
 }
 public void CloseKeyboard_hard(){
-		transform.FindChild ("area").gameObject.SetActive (false);
+	//	transform.FindChild ("area").gameObject.SetActive (false);
 		Main.anchoredPosition = new Vector2 (0,0);
 		if (Using != null) {
 			Using.GetComponent<Image> ().color = new Color (1, 1, 1, 1);
