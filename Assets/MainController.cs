@@ -40,6 +40,8 @@ public class MainController : MonoBehaviour {
 						ga = Mathf.Atan(s/g)*Mathf.Rad2Deg;
 					Dd = d/g;
 						se = s / g;
+						gg = g;
+						ss = s;
 				TC.NomalToggle [2].S.text = ban3(d);
 				TC.NomalToggle [3].S.text = ban3(ga);
 					//	TC.NomalToggle [2].S.text
@@ -59,6 +61,8 @@ public class MainController : MonoBehaviour {
 						ga = Mathf.Acos(g/d)*Mathf.Rad2Deg;
                  Dd = d/g;
 						se = s / g;
+						gg = g;
+						ss = s;
 				TC.NomalToggle [1].S.text = ban3(s);
 				TC.NomalToggle [3].S.text = ban3(ga);
 				//charton();
@@ -77,6 +81,8 @@ public class MainController : MonoBehaviour {
 						d = Mathf.Sqrt (Mathf.Pow(g,2)+Mathf.Pow(s,2));
 						Dd = d/g;
 						se = s / g;
+						gg = g;
+						ss = s;
 				TC.NomalToggle [1].S.text = ban3(s);
 				TC.NomalToggle [2].S.text = ban3(d);
 //charton();
@@ -94,6 +100,8 @@ float g ,s,d,ga;
 						ga = Mathf.Atan(s/g)*Mathf.Rad2Deg;
 						Dd = d/g;
 						se = s / g;
+						gg = g;
+						ss = s;
 				TC.NomalToggle [0].S.text = ban3(g);
 				TC.NomalToggle [3].S.text = ban3(ga);
 //charton();
@@ -111,6 +119,8 @@ float g ,s,d,ga;
 						d = Mathf.Sqrt (Mathf.Pow(g,2)+Mathf.Pow(s,2));
 								Dd = d/g;
 						se = s / g;
+						gg = g;
+						ss = s;
 				TC.NomalToggle [0].S.text = ban3(g);
 				TC.NomalToggle [2].S.text = ban3(d);
 		
@@ -129,6 +139,8 @@ float g ,s,d,ga;
 						g = Mathf.Sqrt (Mathf.Pow(d,2)-Mathf.Pow(s,2));
 						Dd = d/g;
 						se = s / g;
+						gg = g;
+						ss = s;
 				TC.NomalToggle [0].S.text = ban3(g);
 				TC.NomalToggle [1].S.text = ban3(s);
 				//charton();
@@ -166,6 +178,14 @@ float g ,s,d,ga;
 		GameObject.Find ("Canvas").transform.FindChild ("Main").FindChild ("midle").FindChild ("3").FindChild ("Toggle").GetChild (0).GetChild (0).gameObject.SetActive (false);
 		GameObject.Find ("Canvas").transform.FindChild ("Main").FindChild ("midle").FindChild ("4").FindChild ("Toggle").GetChild (0).GetChild (0).gameObject.SetActive (false);
 		GameObject.Find ("Canvas").transform.FindChild ("Main").FindChild ("midle").FindChild ("5").FindChild ("Toggle").GetChild (0).GetChild (0).gameObject.SetActive (false);
+		GameObject.Find("Canvas").transform.FindChild("Main").FindChild("midle").FindChild("8").FindChild("Text").GetChild(0).GetChild(0).GetComponent<Text>().text = "";
+		GameObject.Find("Canvas").transform.FindChild("Main").FindChild("midle").FindChild("8").FindChild("Text2").GetChild(0).GetChild(0).GetComponent<Text>().text = "";
+		GameObject.Find ("Canvas").transform.FindChild ("Main").FindChild ("midle").FindChild ("8").FindChild ("Toggle").GetComponent<Toggle> ().isOn = true;
+		leght.statues = 2;
+		control9.status9 = 2;
+		GameObject.Find ("Canvas").transform.FindChild ("Main").FindChild ("midle").FindChild ("9").FindChild ("Toggle1").GetComponent<Toggle> ().isOn = false;
+		GameObject.Find ("Canvas").transform.FindChild ("Main").FindChild ("midle").FindChild ("9").FindChild ("Toggle2").GetComponent<Toggle> ().isOn = true;
+		//GameObject.Find ("Canvas").transform.FindChild ("Main").FindChild ("midle").FindChild ("9").FindChild ("Toggle3").GetComponent<Toggle> ().isOn = false;
 		TC.maker.Clear ();
 		TC.transform.parent.FindChild("1").GetChild(0).GetComponent<LoopHorizontalScrollRect>().RefreshCells();
 		TC.transform.parent.FindChild("view2").FindChild("2").GetChild(0).GetComponent<LoopHorizontalScrollRect>().RefreshCells();
@@ -186,16 +206,41 @@ float g ,s,d,ga;
         return ban3(float.Parse(f));
     }
 	
-	public static float Dd;
-	public static float se;
+	public static float Dd,dd;
+	public static float se,sse,gg,ss;
 	void charton(){
 
 		if(GameObject.Find("Canvas").transform.FindChild("Main").FindChild("midle").FindChild("6").FindChild("Text").GetChild(0).GetChild(0).GetComponent<Text>().text!=""&&GameObject.Find("Canvas").transform.FindChild("Main").FindChild("midle").FindChild("7").FindChild("Text2").GetChild(0).GetChild(0).GetComponent<Text>().text!=""){
-			se = se*float.Parse(GameObject.Find("Canvas").transform.FindChild("Main").FindChild("midle").FindChild("7").FindChild("Text2").GetChild(0).GetChild(0).GetComponent<Text>().text);
+			Debug.Log (leght.statues);
+			sse = se;
+			se = se * float.Parse (GameObject.Find ("Canvas").transform.FindChild ("Main").FindChild ("midle").FindChild ("7").FindChild ("Text2").GetChild (0).GetChild (0).GetComponent<Text> ().text);
+			/*
+			if (leght.statues == 2) {
+				se = se * float.Parse (GameObject.Find ("Canvas").transform.FindChild ("Main").FindChild ("midle").FindChild ("7").FindChild ("Text2").GetChild (0).GetChild (0).GetComponent<Text> ().text);
+			} else if (leght.statues == 1) {
+				if (leght.L.transform.GetChild (0).GetComponent<Text> ().text != "") {
+					float N = float.Parse (leght.L.transform.GetChild (0).GetComponent<Text> ().text);
+					se = se * (float.Parse (GameObject.Find ("Canvas").transform.FindChild ("Main").FindChild ("midle").FindChild ("7").FindChild ("Text2").GetChild (0).GetChild (0).GetComponent<Text> ().text) + N);
+				} else {
+					se = se * float.Parse (GameObject.Find ("Canvas").transform.FindChild ("Main").FindChild ("midle").FindChild ("7").FindChild ("Text2").GetChild (0).GetChild (0).GetComponent<Text> ().text);
+				}
+
+			} else if (leght.statues == 3) {
+				if (leght.R.transform.GetChild (0).GetComponent<Text> ().text != "") {
+					float N = float.Parse (leght.R.transform.GetChild (0).GetComponent<Text> ().text);
+					se = se * (float.Parse (GameObject.Find ("Canvas").transform.FindChild ("Main").FindChild ("midle").FindChild ("7").FindChild ("Text2").GetChild (0).GetChild (0).GetComponent<Text> ().text) - N);
+				} else {
+					se = se * float.Parse (GameObject.Find ("Canvas").transform.FindChild ("Main").FindChild ("midle").FindChild ("7").FindChild ("Text2").GetChild (0).GetChild (0).GetComponent<Text> ().text);
+				}
+			}
+*/
+
+
+			
 		TC.transform.parent.FindChild("1").GetChild(0).GetComponent<LoopHorizontalScrollRect>().RefreshCells();
 }
 		if(GameObject.Find("Canvas").transform.FindChild("Main").FindChild("midle").FindChild("7").FindChild("Text2").GetChild(0).GetChild(0).GetComponent<Text>().text!=""){
-			
+			dd = Dd;
 				Dd = Dd*float.Parse(GameObject.Find("Canvas").transform.FindChild("Main").FindChild("midle").FindChild("7").FindChild("Text2").GetChild(0).GetChild(0).GetComponent<Text>().text);
 
 		TC.transform.parent.FindChild("view2").FindChild("2").GetChild(0).GetComponent<LoopHorizontalScrollRect>().RefreshCells();

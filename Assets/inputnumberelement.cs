@@ -15,8 +15,9 @@ void Start(){
 		,((0.5f-GetComponent<RectTransform>().pivot.y)*GetComponent<RectTransform>().sizeDelta.y));
 
 		Main = inputnumber.instans.Main;
-	
+		if (GetComponent<EventTrigger> () == null) {
 			this.gameObject.AddComponent<EventTrigger> ();
+		}
 
 		EventTrigger trigger =		this.GetComponent<EventTrigger> ();
 			EventTrigger.Entry entry = new EventTrigger.Entry ();

@@ -47,10 +47,18 @@ if(PlayerPrefs.GetString("6")!=""){
 
 	Main.FindChild("midle").FindChild("6").FindChild("Text").GetChild(0).GetChild(0).GetComponent<Text>().text  = PlayerPrefs.GetString("6");
 }
-if(PlayerPrefs.GetString("7")!=""){
+		if(PlayerPrefs.GetString("7")!=""){
 
-	Main.FindChild("midle").FindChild("7").FindChild("Text2").GetChild(0).GetChild(0).GetComponent<Text>().text  = PlayerPrefs.GetString("7");
-}
+			Main.FindChild("midle").FindChild("7").FindChild("Text2").GetChild(0).GetChild(0).GetComponent<Text>().text  = PlayerPrefs.GetString("7");
+		}
+		if(PlayerPrefs.GetString("81")!=""){
+
+			Main.FindChild("midle").FindChild("8").FindChild("Text").GetChild(0).GetChild(0).GetComponent<Text>().text  = PlayerPrefs.GetString("81");
+		}if(PlayerPrefs.GetString("82")!=""){
+
+			Main.FindChild("midle").FindChild("8").FindChild("Text2").GetChild(0).GetChild(0).GetComponent<Text>().text  = PlayerPrefs.GetString("82");
+		}
+
 
 for(int i = 2 ; i < 6;i++){
 
@@ -60,7 +68,25 @@ Main.FindChild("midle").GetComponent<ToggleController>().maker.Add(Main.FindChil
 }
 }
 
-
+		if (PlayerPrefs.GetInt ("status9") == 0||PlayerPrefs.GetInt ("status9") == 2) {
+			control9.status9 = 2;
+			Main.FindChild("midle").FindChild("9").FindChild("Toggle2").GetComponent<Toggle> ().isOn = true;
+		} else {
+			control9.status9 = PlayerPrefs.GetInt ("status9");
+			if (control9.status9 == 1) {
+				Main.FindChild("midle").FindChild("9").FindChild("Toggle1").GetComponent<Toggle> ().isOn = true;
+			}else if(control9.status9 == 3){
+				Main.FindChild("midle").FindChild("9").FindChild("Toggle3").GetComponent<Toggle> ().isOn = true;
+			}
+		}
+		if (PlayerPrefs.GetInt ("Toggle8")==1||PlayerPrefs.GetInt ("Toggle8")==0) {
+			Main.FindChild("midle").FindChild("8").GetComponent<leght>().m.GetComponent<Toggle> ().isOn = true;
+		}
+		if (PlayerPrefs.GetInt ("status8") == 0) {
+			leght.statues = 2;
+		} else {
+			leght.statues = PlayerPrefs.GetInt ("status8");
+		}
 
 		for (int i = 0; i < transform.childCount - 1; i++) {
 
@@ -147,7 +173,15 @@ void FallowText(){
 
 			break;
 		}
-		PlayerPrefs.SetString(Using.transform.parent.parent.name,Using.transform.GetChild (0).GetComponent<Text> ().text);
+			if (Using.transform.parent.parent.name != "8") {
+				PlayerPrefs.SetString (Using.transform.parent.parent.name, Using.transform.GetChild (0).GetComponent<Text> ().text);
+			} else {
+				if (Using.transform.parent.name == "Text") {
+					PlayerPrefs.SetString (Using.transform.parent.parent.name + "1", Using.transform.GetChild (0).GetComponent<Text> ().text);
+				} else {
+					PlayerPrefs.SetString (Using.transform.parent.parent.name+"2", Using.transform.GetChild (0).GetComponent<Text> ().text);
+				}
+			}
 	}
 }
 
@@ -157,13 +191,13 @@ public void Closecheck(){
 }
 public void OpenKeyboard_hard(){
 GetComponent<RectTransform>().anchoredPosition = new Vector2(0,1000);
-		transform.FindChild ("area").gameObject.SetActive (true);
+		//transform.FindChild ("area").gameObject.SetActive (true);
 }
 public void OpenKeyboard_soft(float time){
 StartCoroutine(Mathf_Lerp(0,1000,time));
 }
 public void CloseKeyboard_hard(){
-		transform.FindChild ("area").gameObject.SetActive (false);
+		//transform.FindChild ("area").gameObject.SetActive (false);
 		Main.anchoredPosition = new Vector2 (0,0);
 		if (Using != null) {
 			Using.GetComponent<Image> ().color = new Color (1, 1, 1, 1);

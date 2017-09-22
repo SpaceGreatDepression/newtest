@@ -66,9 +66,12 @@
      <Compile Include="Assets\ToggleController.cs" />
      <Compile Include="Assets\Util.cs" />
      <Compile Include="Assets\buttonsyning.cs" />
+     <Compile Include="Assets\control9.cs" />
      <Compile Include="Assets\inputnumber.cs" />
      <Compile Include="Assets\inputnumberelement.cs" />
+     <Compile Include="Assets\leght.cs" />
      <Compile Include="Assets\midcont.cs" />
+     <Compile Include="Assets\rptksdyd.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity5.2/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

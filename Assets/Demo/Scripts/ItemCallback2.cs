@@ -18,10 +18,33 @@ public class ItemCallback2 : MonoBehaviour
             string s =GameObject.Find("Canvas").transform.FindChild("Main").FindChild("midle").FindChild("7").FindChild("Text2").GetChild(0).GetChild(0).GetComponent<Text>().text;
             if(s!=""){
            float num = MainController.Dd;
-			
+				if (control9.status9 == 1) {
+					text.text = MainController.ban3 (MainController.gg- ((float)(idx) * num));
+				} else {
           
-            text.text = MainController.ban3((float)(idx+1) * num);
-       
+					//text.text = MainController.ban3 ((float)(idx + 1) * num);
+
+
+
+					if (leght.statues == 2) {
+						text.text = MainController.ban3 ((float)(idx ) * num);
+					} else if (leght.statues == 1) {
+						if (leght.L.transform.GetChild (0).GetComponent<Text> ().text != "") {
+							float N = MainController.dd * float.Parse (leght.L.transform.GetChild (0).GetComponent<Text> ().text);
+							text.text = MainController.ban3 ((float)(idx ) * num + N);
+						} else {
+							text.text = MainController.ban3 ((float)(idx ) * num);
+						}
+
+					} else if (leght.statues == 3) {
+						if (leght.R.transform.GetChild (0).GetComponent<Text> ().text != "") {
+							float N = MainController.dd * float.Parse (leght.R.transform.GetChild (0).GetComponent<Text> ().text);
+							text.text = MainController.ban3 ((float)(idx ) * num - N);
+						} else {
+							text.text = MainController.ban3 ((float)(idx ) * num);
+						}
+					}
+				}
         }else{
                 text.text = "";
             }

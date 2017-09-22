@@ -24,7 +24,53 @@ public class ItemCallback : MonoBehaviour
            float num = float.Parse(s);
           float num1 = float.Parse(s1);
           
-				text.text = MainController.ban3(((float)idx*numb) + num);
+
+				if (control9.status9 == 1) {
+
+
+					if (leght.statues == 2) {
+						text.text = MainController.ban3 (MainController.ss+num - (((float)idx * numb) + num));
+					} else if (leght.statues == 1) {
+						if (leght.L.transform.GetChild (0).GetComponent<Text> ().text != "") {
+							float N = MainController.sse * float.Parse (leght.L.transform.GetChild (0).GetComponent<Text> ().text);
+							text.text = MainController.ban3 (MainController.ss+num-(((float)idx * numb) + num + N));
+						} else {
+							text.text = MainController.ban3 (MainController.ss+num-(((float)idx * numb) + num));
+						}
+
+					} else if (leght.statues == 3) {
+						if (leght.R.transform.GetChild (0).GetComponent<Text> ().text != "") {
+							float N = MainController.sse * float.Parse (leght.R.transform.GetChild (0).GetComponent<Text> ().text);
+							text.text = MainController.ban3 (MainController.ss+num-(((float)idx * numb) + num - N));
+						} else {
+							text.text = MainController.ban3 (MainController.ss+num-(((float)idx * numb) + num));
+						}
+					}
+				} else {
+
+				//	if (idx == 0) {
+						if (leght.statues == 2) {
+							text.text = MainController.ban3 (((float)idx * numb) + num);
+						} else if (leght.statues == 1) {
+							if (leght.L.transform.GetChild (0).GetComponent<Text> ().text != "") {
+								float N = MainController.sse * float.Parse (leght.L.transform.GetChild (0).GetComponent<Text> ().text);
+							text.text = MainController.ban3 (((float)idx * numb) + num + N);
+							} else {
+								text.text = MainController.ban3 (((float)idx * numb) + num);
+							}
+
+						} else if (leght.statues == 3) {
+							if (leght.R.transform.GetChild (0).GetComponent<Text> ().text != "") {
+								float N = MainController.sse * float.Parse (leght.R.transform.GetChild (0).GetComponent<Text> ().text);
+							text.text = MainController.ban3 (((float)idx * numb) + num - N);
+							} else {
+								text.text = MainController.ban3 (((float)idx * numb) + num);
+							}
+						}
+					//} else {
+					//	text.text = MainController.ban3 (((float)idx * numb) + num);
+					//}
+				}
        
         }else{
                 text.text = "";
